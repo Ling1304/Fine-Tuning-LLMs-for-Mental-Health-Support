@@ -1,4 +1,4 @@
-# Fine-Tuning-LLM-for-Math-Problems-with-LoRA-and-QLoRA
+# Fine-Tuning-LLM-for-Math-Problems-with-LoRA-and-QLoRA (ONGOING) 
 
 This project focuses on fine-tuning a **large language model (LLM)** to solve simple math problems. By using **PEFT (Parameter-Efficient Fine-Tuning)** techniques such as **LoRA (Low-Rank Adaptation)** and **QLoRA (Quantized Low-Rank Adaptation)**, the model can learn effectively while minimizing resource usage.
 
