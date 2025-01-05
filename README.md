@@ -1,45 +1,57 @@
-# Fine-Tuning-LLM-for-Math-Problems-with-LoRA-and-QLoRA (ONGOING) 
+# Fine-Tuning a Large Language Model for Mental Health Support  
 
-This project focuses on fine-tuning a **large language model (LLM)** to solve simple math problems. By using **PEFT (Parameter-Efficient Fine-Tuning)** techniques such as **LoRA (Low-Rank Adaptation)** and **QLoRA (Quantized Low-Rank Adaptation)**, the model can learn effectively while minimizing resource usage.
+This repository focuses on fine-tuning a **Large Language Model (LLM)** to assist individuals with their mental health and provide support for live call centers. Using **PEFT (Parameter-Efficient Fine-Tuning)** techniques such as **LoRA (Low-Rank Adaptation)** and **QLoRA (Quantized Low-Rank Adaptation)**, the model achieves high performance with minimal resource requirements.
 
-The **microsoft/orca-math-word-problems-200k** dataset from Hugging Face is used to train the model. The training process is optimized with **BitsAndBytes** for 4-bit double quantization, making it scalable even on smaller hardware setups.
+The implementation utilizes the **Amod/mental_health_counseling_conversations** dataset from Hugging Face and integrates **BitsAndBytes** for 4-bit double quantization, ensuring scalability even on hardware with limited computational resources.
 
-## Workflow Overview  
-1. **Load the Dataset**  
-   - Use the `microsoft/orca-math-word-problems-200k` dataset from Hugging Face.  
+---
 
-2. **Quantization Setup**  
-   - Configure **BitsAndBytes** to load the model in **4-bit double quantized mode** for efficient resource usage.  
+## 🛠️ Fine Tuning Process  
 
-3. **Tokenizer Setup**  
-   - Set up and configure the tokenizer to handle math word problems.  
+The fine-tuning process involves a series of carefully orchestrated steps:  
 
-4. **Dataset Preprocessing**  
-   - Format the dataset to prepare it for training, ensuring compatibility with the model's input format.  
+### 1. **Dataset**  
+- The `Amod/mental_health_counseling_conversations` dataset is used for training, containing real-world examples of counseling conversations.  
+- The dataset is preprocessed and formatted to align with the model’s input structure.  
 
-5. **LoRA Configuration**  
-   - Configure and initialize the **LoRA adapter** for efficient parameter tuning.  
+### 2. **Model Quantization**  
+- The model is loaded using **BitsAndBytes** in **4-bit double quantized mode**, significantly reducing memory and computational overhead while maintaining performance.  
 
-6. **Training Setup**  
-   - Define training arguments (e.g., learning rate, batch size) and create a `Trainer` instance for the training process.  
+### 3. **PEFT Techniques**  
+- **LoRA**: Efficiently tunes a subset of model parameters using low-rank matrices, reducing the number of parameters requiring updates.  
+- **QLoRA**: Further optimizes memory usage by combining quantization with LoRA, enabling high performance on smaller hardware setups.  
 
-7. **Model Training**  
-   - Train the model, tuning parameters to minimize training loss.  
+### 4. **Training Process**  
+- The model is fine-tuned using carefully selected hyperparameters (e.g., learning rate, batch size).  
+- Loss minimization and evaluation metrics guide the optimization process.  
 
-8. **Merge Adapters**  
-   - After training, merge the **LoRA adapter** with the base model to finalize the fine-tuned version.  
+### 5. **Finalization and Deployment**  
+- After fine-tuning, the **LoRA adapter** is merged with the base model to create the final version.  
+- The fine-tuned model is pushed to Hugging Face for public access and deployment.  
 
-## Next Steps  
-- **Upload to Hugging Face**: Once the training loss is optimized, the fine-tuned model will be uploaded to Hugging Face for public use.  
-- **Deploy the Model**: The model will be deployed using **Streamlit** for interactive demos and **Amazon SageMaker** for scalable production environments.  
+---
+
+## 📂 Repository Structure  
+
+### `src` Folder  
+- **`data_preprocessing.ipynb`**  
+  Handles preprocessing tasks for the dataset, including tokenization and formatting for training. (Note that only 20% of the data is used for training due to memory constraints)
+
+- **`train.ipynb`**  
+  Script for fine-tuning the model. Includes training loop, optimizer configuration, and checkpoint saving.   
+
+### `models` Folder  
+- Contains the trained model weights after fine-tuning.  
+
+---
 
 ## Key Features  
-- **Solving Math Problems**: A model fine-tuned for handling math word problems effectively.  
-- **PEFT Techniques**: Efficient fine-tuning with LoRA and QLoRA to reduce computational requirements.  
-- **Efficient Quantization**: Use of **BitsAndBytes** for 4-bit double quantization to make training faster and lighter.  
-- **Reproducible Workflow**: Includes a step-by-step guide in a Colab notebook for experimentation and adaptation.  
 
-## Model Access  
-The fine-tuned model will soon be available on Hugging Face. Demos will be accessible via **Streamlit**, and the model will also be deployed using **Amazon SageMaker** for larger-scale applications.  
+- **Mental Health Focus**: Specifically fine-tuned for counseling and support conversations.  
+- **Resource Efficiency**: LoRA and QLoRA enable fine-tuning with reduced computational requirements.  
+- **Scalability**: Can be deployed on hardware with limited memory and processing power.  
+- **Reproducibility**: Includes a detailed step-by-step workflow for easy replication.  
 
-Stay tuned for updates!
+---
+
+Stay tuned for updates and enhancements! Contributions and feedback are welcome to improve this project further.  
